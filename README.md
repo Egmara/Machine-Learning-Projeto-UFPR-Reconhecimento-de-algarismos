@@ -12,7 +12,7 @@ Mais detalhes estão disponíveis nos [slides](https://github.com/Egmara/Machine
 
 ## Recursos necessários
 
-Além do python 3.7, são precisos diversos pacotes para executar os scripts. Esses podem ser instalados no Linux via package manager
+Além do python 3.7 são necessários diversos pacotes, que podem ser instalados no Linux com o package manager
 
     "sudo apt-get install python-numpy python-matplotlib ipython jupyter-notebook python-opencv python-sklearn"
 
