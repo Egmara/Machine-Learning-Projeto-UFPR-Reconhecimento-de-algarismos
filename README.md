@@ -6,7 +6,7 @@ Esse projeto foi desenvolvido e apresentado no grupo de Machine Learning da UFPR
 
 Desenvolvemos classificadores capazes de reconhecer dígitos escritos manualmente em imagens digitalizadas.
 
-Para isso foram construídos banco de dado e tratamento de imagem próprio. Classificadores de redes neurais e florestas foram treinados usando Scikit-learn, sendo todas as implementações com Jupyter Notebook em python 3.7.
+Para isso foram construídos banco de dado e tratamento de imagem próprios. Classificadores de redes neurais e florestas foram treinados usando Scikit-learn, sendo todas as implementações com Jupyter Notebook em python 3.7.
 
 Mais detalhes estão disponíveis nos [slides](https://github.com/Egmara/Machine-Learning-Projeto-UFPR-Reconhecimento-de-algarismos/blob/master/SlidesApresentacao.pdf) e na [apresentação](https://github.com/Egmara/Machine-Learning-Projeto-UFPR-Reconhecimento-de-algarismos/blob/master/Apresentacao.ipynb).
 
