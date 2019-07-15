@@ -1,6 +1,6 @@
 # Projeto de Reconhecimento de Dígitos
 
-Esse projeto foi desenvolvido e apresentado no grupo de Machine Learning da UFPR.
+Esse projeto foi desenvolvido pelo CiDAMO, grupo de Ciência de Dados, Aprendizagem de Máquina, e Otimização da UFPR.
 
 ## Sobre o projeto
 
