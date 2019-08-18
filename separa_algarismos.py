@@ -1,6 +1,5 @@
-# Esta função identifica os algarismos na foto, gera uma imagem quadrada
-# de tamanho padrão com cada um deles centralizados e retorna os vetores que
-# representam cada imagem
+# Esta função identifica os algarismos na foto, gera uma imagem quadrada de tamanho
+# padrão com cada um deles centralizados e retorna os vetores que representam cada imagem
 
 def separa_algarismos(filename):
 
@@ -57,3 +56,4 @@ def separa_algarismos(filename):
         Vetores.append(M.flatten())
 
     return Vetores
+    
