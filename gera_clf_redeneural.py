@@ -1,47 +1,38 @@
-from sklearn.neural_network import MLPClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.datasets import fetch_openml
-import matplotlib.pyplot as plt
 import numpy as np
-from sklearn.externals import joblib
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import SVC
+import joblib
 from sklearn.model_selection import KFold
+from sklearn.neural_network import MLPClassifier
 
 X = np.load('Banco de dados/Saidas/Num2250.npy')
 y = np.load('Banco de dados/Saidas/Target2250.npy')
 
-# inversao para branco (255) no fundo preto (0) e normalização
+# Inversão para branco (255) no fundo preto (0) e normalização
 X = X/255
 X = -X + 1
 
-kf = KFold(n_splits = 5)
-kf.get_n_splits(X)
+# Análise com Cross Validation - Rede Neural
+# 'analysing = True' para visualizar os scores, o que demora alguns segundos
+# 'analysing = False' gera o classificador ótimo e salva
 
-# analise - Rede Neural
-medias = []
-for i in range(50,201,25):
+analysing = True
 
-    scores = []
-    clf_redeneural = MLPClassifier(hidden_layer_sizes=(i),activation='relu', max_iter=55, alpha=1e-4,
-                    solver='lbfgs', verbose=False, tol=1e-4, random_state=1,
-                    learning_rate_init=.1)
+if analysing:
+    kf = KFold(n_splits = 5)
+    medias = []
+    for layer1_size in range(50, 126, 25):
+        scores = []
+        clf_redeneural = MLPClassifier(hidden_layer_sizes=(layer1_size), alpha=1e-4, solver='lbfgs', verbose=False)
 
-    for train_index, test_index in kf.split(X):
-
-        X_train, X_test, y_train, y_test = X[train_index], X[test_index], y[train_index], y[test_index]
-        clf_redeneural.fit(X_train, y_train)
-        scores.append(clf_redeneural.score(X_test, y_test))
-
-    medias.append(np.mean(scores))
-
+        for train_index, test_index in kf.split(X):
+            X_train, X_test, y_train, y_test = X[train_index], X[test_index], y[train_index], y[test_index]
+            clf_redeneural.fit(X_train, y_train)
+            scores.append(clf_redeneural.score(X_test, y_test))
+        medias.append(np.mean(scores))
     print(medias)
+else:
+    # Gera o modelo com os parâmetros escolhidos com base na análise
+    clf_redeneural = MLPClassifier(hidden_layer_sizes=(75), alpha=1e-4, solver='lbfgs', verbose=False)
+    clf_redeneual.fit(X, y)
 
-# modelo otimo
-#clf_redeneural = MLPClassifier(hidden_layer_sizes=(100),activation='relu', max_iter=55, alpha=1e-4,
-#                solver='lbfgs', verbose=False, tol=1e-4, random_state=1,
-#                learning_rate_init=.1)
-#clf_redeneual.fit(X, y)
-
-# salva o modelo
-#joblib.dump(clf_redeneural, 'Modelos_de_Classificacao/clf_redeneural.pkl')
+    # Salva o modelo
+    joblib.dump(clf_redeneural, 'Modelos_de_Classificacao/clf_redeneural.pkl')
